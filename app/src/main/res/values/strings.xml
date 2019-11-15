@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SYDTEK BLE V1.1.4</string>
+    <string name="title_activity_ota__active">OTA_Active</string>
+    <string name="title_activity_about_active">ABOUT_Active</string>
+    <string name="title_activity_test_Activity">TestActivity</string>
+    <string name="title_activity_blelog_Activity">BlelogActivity</string>
+</resources>

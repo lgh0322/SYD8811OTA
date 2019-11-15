@@ -1,0 +1,71 @@
+<p>
+	<span style="font-size:10.5pt;">&nbsp;&nbsp; 本程序版权属于<span style="font-size:10.5pt;"><span>成都盛芯微科技SYDTEK，更多内容请看官网：<a href="http://www.sydtek.com/" target="_blank">http://www.sydtek.com/</a><br />
+</span></span></span>
+</p>
+<p>
+	<span style="font-size:10.5pt;"><span style="font-size:10.5pt;"><span>&nbsp;&nbsp; 实现OTA的功能要实现手机APP端的代码和SYDTEK蓝牙设备端的代码，两端代码的相关指导都有详细文档，这里可以和官网索取！两份代码分别是《SYDTEK OTA设备端使用说明.PDF》,《SYDTEK OTA通信协议说明.docx》，自OTA2.0协议以上，SYDTED只是提供安卓端的源代码和具体的OTA协议，至于IOS端的代码将不再提供，可以移植安卓端代码到IOS端或者参考协议自己写IOS端的代码！</span></span></span>
+</p>
+<p>
+	<span style="font-size:10.5pt;"><span style="font-size:10.5pt;"><span>&nbsp;<br />
+</span></span></span>
+</p>
+<p>
+	<span style="font-size:10.5pt;">&nbsp;&nbsp;&nbsp; 在OTA界面中有如下选项：<br />
+&nbsp;&nbsp; &nbsp;1.OTA 24K，该选项被选中的时候代表此时OTA的是SYD8801中24K空间的静态数据，当然对于SYD8821和SYD8811就相当于FLASH DATA的数据，当不选中的时候代表此时OTA的是代码，默认不选中！<br />
+&nbsp;&nbsp; &nbsp;2.before Ota,该选项决定在进行OTA之前可否要进行某些额外的处理，有如下可选功能：<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;A.Select special operation，该选项代表在OTA之前不会进行任何额外的操作！<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;B.Send FC com to UUID:0x0001,该功能代表在OTA之前会通过UART通道发送FC命令，在SYD8801的手环等产品中会通过该命令进行蓝牙速度的提升，也就是提高蓝牙的功耗，以保证OTA图中有更快的速度！<br />
+&nbsp;&nbsp; &nbsp;3.Doing Ota,该选项决定在ota过程中的具体行为，有如下可选功能：<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;A.Select special operation，该选项代表在OTA之前不会进行任何额外的操作！<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;B.Read characteristic after write,该功能代表在OTA的流程是&nbsp; write read write read.......,也就是写完一个数据包后还要读取一次，这样的方式比较可靠，但是速度十分慢！&nbsp;&nbsp; </span><span style="font-size:10.5pt;">&nbsp; <br />
+</span> 
+</p>
+<p>
+	<span style="font-size:10.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;Version 1.0<br />
+&nbsp;&nbsp; &nbsp;该版本OTA是SYD8801的OTA协议，对于SYD8821和SYD8811在代码小于65536Byte下也是可以使用的，但是当代码量超过65536Byte后该版本的OTA将不再适用！<br />
+&nbsp;&nbsp; &nbsp;该版本下OTA一般使用的选项如下：<br />
+<img src="./Version10.jpg" alt="" /><br />
+Version 2.0<br />
+&nbsp;&nbsp; &nbsp;该版本OTA协议是基于“Version 1.0”修复代码量最大为65536Byte的问题，同时当升级完成后蓝牙设备端还会上报是否升级成功，当然这里修改了协议，蓝牙设备端的代码也要相应的修改！<br />
+&nbsp;&nbsp; &nbsp;该版本下OTA一般使用的选项如下：<br />
+&nbsp;&nbsp; &nbsp;<img src="./Version20.jpg" alt="" /><br />
+Version 3.0<br />
+&nbsp;&nbsp; &nbsp;该版本OTA协议是基于“Version 2.0”，同时这里对协议有很大的改动，采用分段传输的形式，每段传输还会进行校验值的比较！<br />
+&nbsp;&nbsp; &nbsp;该版本下OTA一般使用的选项如下：<br />
+</span> 
+</p>
+<p>
+	<span style="font-size:10.5pt;"><img src="./Version30.jpg" alt="" /><br />
+</span> 
+</p>
+<p>
+	<span style="font-size:10.5pt;"><br />
+</span> 
+</p>
+<p>
+	<span style="font-size:10.5pt;">&nbsp; 成都盛芯微科技有限公司（<span>SYDTEK</span>）前身成立于<span>2012</span>年，由具有丰富无线通信芯片设计经验的海归团队组建而成，团队成员主要来自清华大学、电子科技大学等学府，专注于超低功耗物联网<span>BLE</span>和智能无线音频芯片设计、开发和销售。产品包括：<span>SYD88XX</span>系列超低功耗物联网<span>BLE</span>蓝牙芯片、<span>SYD66XX</span>系列智能无线音频芯片。</span><span></span> 
+</p>
+<p>
+	<span style="font-size:10.5pt;">&nbsp;
+&nbsp;</span><span style="font-size:10.5pt;">成都盛芯微（<span>SYDTEK</span>）在成都、台湾新竹设有研发中心，在深圳设有技术支持和销售中心。公司与产业链上下游企业有紧密协作和技术沟通，在设计、生产和市场方面拥有丰富的经验。经过多年发展，成都盛芯微（<span>SYDTEK</span>）已经在超低功耗物联网芯片领域有深厚的技术积累，开发出了全球一流低功耗高性能<span>BLE</span>物联网芯片，以及全球第一颗集成心率传感器的超低功耗<span>BLE</span>芯片，为中国芯添砖加瓦。</span><span></span> 
+</p>
+<p>
+	<span style="font-size:10.5pt;">&nbsp;
+&nbsp;</span><span style="font-size:10.5pt;">成都盛芯微科技有限公司致力于成为超低功耗物联网蓝牙和智能无线音频芯片的领导者。</span><span></span> 
+</p>
+<p>
+	<span>&nbsp;<img src="./QRcode.jpg" alt="" /></span> 
+</p>
+<p style="text-align:center;" align="center">
+	<span></span><span></span> 
+</p>
+<p style="text-align:center;background:white;" align="center">
+	<span style="font-size:15.0pt;font-family:&quot;color:#E36C09;">SYD</span><span style="font-size:15.0pt;font-family:&quot;color:#0070C0;">TEK</span><span style="font-size:15.0pt;font-family:&quot;">&nbsp;-&nbsp;<span style="color:#E36C09;">S</span><span style="color:black;">ail&nbsp;</span><span style="color:#E36C09;">Y</span><span style="color:black;">our&nbsp;</span><span style="color:#E36C09;">D</span><span style="color:black;">reams</span></span><span style="font-size:9.0pt;font-family:&quot;"></span> 
+</p>
+<p style="text-align:center;" align="center">
+	<span>&nbsp;</span> 
+</p>
+<p class="MsoNormal">
+	<span>&nbsp;</span> 
+</p>
+<br />

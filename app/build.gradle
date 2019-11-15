@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            storeFile file('../sydtek_apk_release_key.jks')
+            storePassword 'HFL173zfh455'
+            keyPassword 'HFL173zfh455'
+            keyAlias = 'sydtek_key'
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        applicationId "com.example.jackhsueh.ble_ota"
+        minSdkVersion 18
+        targetSdkVersion 18
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        sit {
+            debuggable true
+            signingConfig signingConfigs.config
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                //这里修改apk文件名
+                outputFileName = "SYDTEK BLE.apk"
+            }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    testCompile 'junit:junit:4.12'
+}
