@@ -9,13 +9,13 @@ android {
             keyAlias = 'sydtek_key'
         }
     }
-    compileSdkVersion 23
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
 
     defaultConfig {
         applicationId "com.example.jackhsueh.ble_ota"
         minSdkVersion 18
-        targetSdkVersion 18
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
