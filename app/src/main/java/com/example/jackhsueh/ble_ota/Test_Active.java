@@ -38,6 +38,7 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -224,7 +225,7 @@ public class Test_Active extends Activity {
             }
         });
 
-        String[] ctype = new String[]{"Select special data","点灯:FC010303", "关灯:FC010404","Log:A500A5A5","Version:FB010101","Reset:FF010202","查找:F3010101"};
+        String[] ctype = new String[]{"Select special data","点灯:FC010303", "关灯:FC010404","Log:A500A5A5","Version:FB010101","Reset:FF010202","查找:F3010101","同步时间:C207"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ctype);  //创建一个数组适配器
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);     //设置下拉列表框的下拉选项样式
 
@@ -262,6 +263,43 @@ public class Test_Active extends Activity {
                 else if(spinner_datatype_sel==6)
                 {
                     editText_data.setText("F3010101");
+                }
+                else if(spinner_datatype_sel==7)
+                {
+                    Calendar calendar = Calendar.getInstance();
+                    //年
+                    int year = calendar.get(Calendar.YEAR);
+                    //月
+                    int month = calendar.get(Calendar.MONTH)+1;
+                    //日
+                    int day = calendar.get(Calendar.DAY_OF_MONTH);
+                    //小时
+                    int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                    //分钟
+                    int minute = calendar.get(Calendar.MINUTE);
+                    //秒
+                    int second = calendar.get(Calendar.SECOND);
+                    //星期
+                    int week = calendar.get(Calendar.DAY_OF_WEEK);
+
+                    String str="C207";
+                    byte xor=0;
+                    str+=String.format("%02x", (byte)((year-2000)& 0xFF));
+                    xor ^= (byte)((year-2000)& 0xFF);
+                    str+=String.format("%02x", (byte)(month& 0xFF));
+                    xor ^= (byte)(month& 0xFF);
+                    str+=String.format("%02x", (byte)(day& 0xFF));
+                    xor ^= (byte)(day& 0xFF);
+                    str+=String.format("%02x", (byte)(hour& 0xFF));
+                    xor ^= (byte)(hour& 0xFF);
+                    str+=String.format("%02x", (byte)(minute& 0xFF));
+                    xor ^= (byte)(minute& 0xFF);
+                    str+=String.format("%02x", (byte)(second& 0xFF));
+                    xor ^= (byte)(second& 0xFF);
+                    str+=String.format("%02x", (byte)(week& 0xFF));
+                    xor ^= (byte)(week& 0xFF);
+                    str+=String.format("%02x", (byte)(xor& 0xFF));
+                    editText_data.setText(str);
                 }
             }
             @Override
