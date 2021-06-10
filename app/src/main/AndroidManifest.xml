@@ -5,25 +5,29 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
+        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
-        android:icon="@drawable/app_icon_new"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.Checkme">
         <activity
-            android:name=".ScanBLEActivity"
-            android:theme="@android:style/Theme.Holo.Light">
+            android:name=".PermissionActivity"
+            android:theme="@style/Theme.Checkme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ScanBLEActivity"/>
 
         <service
             android:name=".BleService"
@@ -33,20 +37,20 @@
         <activity
             android:name=".OTA_Active"
             android:label="@string/title_activity_ota__active"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+         ></activity>
 
         <activity
             android:name=".ABOUT_Active"
             android:label="@string/title_activity_about_active"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            ></activity>
         <activity
             android:name=".Test_Active"
             android:label="@string/title_activity_test_Activity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+          ></activity>
         <activity
             android:name=".Blelog_Active"
             android:label="@string/title_activity_blelog_Activity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+           ></activity>
     </application>
 
 </manifest>
